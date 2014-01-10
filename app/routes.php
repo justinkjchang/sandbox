@@ -41,7 +41,11 @@ Route::controller('about','AboutController');
 Route::controller('learn','LearnController');
 Route::controller('events','EventsController');
 
-
+/* * Textbook route
+ * ===========
+ * Currently just an index function. We can add other components to it later
+*/
+Route::resource('textbooks','TextbooksController');
 
 /*
  * ********************************************************************************
@@ -53,6 +57,7 @@ Route::resource('admin/news','AdminNewsController');
 Route::resource('admin/tutorials','AdminTutorialsController');
 Route::resource('admin/users','AdminUsersController');
 Route::resource('admin','AdminController');
+
 //Filters
 Route::when("admin/*","auth");
 Route::when("admin","auth");
@@ -68,6 +73,8 @@ Route::get('login',function()
         return View::make('base.login');
     }
 );
+
+#Route::post('adSubmitted','TextbooksController@create');
 
 Route::post('login',function()
     {
